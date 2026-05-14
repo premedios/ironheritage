@@ -1,0 +1,5 @@
+project_name: "My Project"
+agent:
+    name: "github-copilot"
+    integration: "vscode-extension"
+    instructions_path: ".github/copilot-instructions.md"
