@@ -25,6 +25,9 @@ class AppTheme {
         backgroundColor: foundryCrimson,
         foregroundColor: Colors.white,
       ),
+      navigationBarTheme: NavigationBarThemeData(
+        labelTextStyle: WidgetStateProperty.all(GoogleFonts.robotoSlab()),
+      ),
       // Apply Google Fonts based on typography specifications
       textTheme: TextTheme(
         // Titles/Headlines (Alfa Slab One)
@@ -37,12 +40,12 @@ class AppTheme {
         titleLarge: GoogleFonts.alfaSlabOne(),
         titleMedium: GoogleFonts.alfaSlabOne(),
         titleSmall: GoogleFonts.alfaSlabOne(),
-        
+
         // Data Elements / Labels (Space Mono)
         labelLarge: GoogleFonts.spaceMono(fontWeight: FontWeight.bold),
         labelMedium: GoogleFonts.spaceMono(fontWeight: FontWeight.bold),
         labelSmall: GoogleFonts.spaceMono(fontWeight: FontWeight.bold),
-        
+
         // All other text (Roboto Slab)
         bodyLarge: GoogleFonts.robotoSlab(),
         bodyMedium: GoogleFonts.robotoSlab(),

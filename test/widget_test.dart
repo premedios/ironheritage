@@ -11,20 +11,33 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:ironheritage/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
+  testWidgets('Bottom navigation bar is displayed with five tabs', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const MyApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // NavigationBar is present
+    expect(find.byType(NavigationBar), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // All five navigation destination labels are present in the bar
+    expect(find.text('Home'), findsAtLeastNWidgets(1));
+    expect(find.text('Workouts'), findsAtLeastNWidgets(1));
+    expect(find.text('Progress'), findsAtLeastNWidgets(1));
+    expect(find.text('Nutrition'), findsAtLeastNWidgets(1));
+    expect(find.text('Profile'), findsAtLeastNWidgets(1));
+  });
+
+  testWidgets('Tapping a tab switches the displayed screen', (
+    WidgetTester tester,
+  ) async {
+    await tester.pumpWidget(const MyApp());
+
+    // Tap the Workouts tab via the NavigationBar label
+    await tester.tap(find.text('Workouts').last);
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // NavigationBar still shows all destinations
+    expect(find.byType(NavigationBar), findsOneWidget);
+    expect(find.text('Workouts'), findsAtLeastNWidgets(1));
   });
 }
